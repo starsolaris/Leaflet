@@ -30,9 +30,9 @@ L.Map.Drag = L.Handler.extend({
 
 			if (map.options.worldCopyJump) {
 				this._draggable.on('predrag', this._onPreDrag, this);
-				map.on('viewreset', this._onViewReset, this);
+				map.on('zoomend', this._onZoomEnd, this);
 
-				map.whenReady(this._onViewReset, this);
+				map.whenReady(this._onZoomEnd, this);
 			}
 		}
 		this._draggable.enable();
@@ -82,7 +82,7 @@ L.Map.Drag = L.Handler.extend({
 		    .fire('drag', e);
 	},
 
-	_onViewReset: function () {
+	_onZoomEnd: function () {
 		var pxCenter = this._map.getSize().divideBy(2),
 		    pxWorldCenter = this._map.latLngToLayerPoint([0, 0]);
 
