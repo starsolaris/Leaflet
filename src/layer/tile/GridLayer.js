@@ -96,7 +96,7 @@ L.GridLayer = L.Layer.extend({
 
 	getEvents: function () {
 		var events = {
-			zoomend: this._resetView,
+			zoom: this._resetView,
 			moveend: this._onMoveEnd
 		};
 
