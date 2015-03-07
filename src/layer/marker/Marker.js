@@ -206,7 +206,10 @@ L.Marker = L.Layer.extend({
 
 		L.DomUtil.addClass(this._icon, 'leaflet-interactive');
 
-		this.addInteractiveTarget(this._icon);
+		var subElements = [this._icon].concat(Array.prototype.slice.call(this._icon.querySelectorAll('*')));
+		for (var i = 0; i < subElements.length; i++) {
+			this.addInteractiveTarget(subElements[i]);
+		}
 
 		if (L.Handler.MarkerDrag) {
 			var draggable = this.options.draggable;
