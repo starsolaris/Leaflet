@@ -198,7 +198,9 @@ L.Marker = L.Class.extend({
 	},
 
 	_setPos: function (pos) {
-		L.DomUtil.setPosition(this._icon, pos);
+		if (this._icon) {
+			L.DomUtil.setPosition(this._icon, pos);
+		}
 
 		if (this._shadow) {
 			L.DomUtil.setPosition(this._shadow, pos);
