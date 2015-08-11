@@ -212,6 +212,9 @@ L.Marker = L.Class.extend({
 	},
 
 	_updateZIndex: function (offset) {
+		if (!this._icon) {
+			return;
+		}
 		this._icon.style.zIndex = this._zIndex + offset;
 	},
 
